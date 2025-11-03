@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Plans - GT Investment</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">GT <span>Investment</span></div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="plans.html">Plans</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html" class="btn small">Login</a>
+    </nav>
+    <button class="burger" aria-label="menu">☰</button>
+  </header>
+
+  <main class="container">
+    <div class="card">
+      <h2>Investment Plans</h2>
+      <p class="muted">Choose a plan (demo only — no real yields)</p>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
+        <div class="card" style="flex:1;min-width:220px">
+          <h3>Basic</h3>
+          <div class="muted">1 month</div>
+          <div style="margin-top:8px;font-weight:700;font-size:18px">₹500</div>
+          <div style="margin-top:8px"><button class="btn" onclick="choosePlan('basic')">Choose</button></div>
+        </div>
+
+        <div class="card" style="flex:1;min-width:220px">
+          <h3>Standard</h3>
+          <div class="muted">3 months</div>
+          <div style="margin-top:8px;font-weight:700;font-size:18px">₹1500</div>
+          <div style="margin-top:8px"><button class="btn" onclick="choosePlan('standard')">Choose</button></div>
+        </div>
+
+        <div class="card" style="flex:1;min-width:220px">
+          <h3>Pro</h3>
+          <div class="muted">12 months</div>
+          <div style="margin-top:8px;font-weight:700;font-size:18px">₹5000</div>
+          <div style="margin-top:8px"><button class="btn" onclick="choosePlan('pro')">Choose</button></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div>© <span id="year2"></span> GT Investment — Demo site</div>
+  </footer>
+
+  <script>
+    document.getElementById('year2').textContent = new Date().getFullYear();
+    function choosePlan(p){
+      localStorage.setItem('demo_chosen_plan', p);
+      alert('Plan chosen: ' + p + '. Go to Home and invest using Quick invest.');
+      location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>
