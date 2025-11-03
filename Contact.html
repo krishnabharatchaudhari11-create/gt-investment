@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact - GT Investment</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">GT <span>Investment</span></div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="plans.html">Plans</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="burger" aria-label="menu">☰</button>
+  </header>
+
+  <main class="container">
+    <div class="card" style="max-width:720px;margin:auto">
+      <h2>Contact & Support</h2>
+      <p class="muted">This is a demo project. For actual deployment integrate real contact form backend.</p>
+
+      <label>Your name</label>
+      <input id="cname" />
+      <label>Email</label>
+      <input id="cemail" />
+      <label>Message</label>
+      <textarea id="cmsg" rows="6" style="width:100%;padding:10px;border-radius:8px;background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.04)"></textarea>
+      <div class="row">
+        <button id="sendMsg" class="btn">Send message</button>
+      </div>
+
+      <div id="sentBox" class="muted" style="margin-top:12px"></div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div>© <span id="year4"></span> GT Investment — Demo site</div>
+  </footer>
+
+  <script>
+    document.getElementById('year4').textContent = new Date().getFullYear();
+    document.getElementById('sendMsg').addEventListener('click', ()=>{
+      const n = document.getElementById('cname').value,
+            e = document.getElementById('cemail').value,
+            m = document.getElementById('cmsg').value;
+      if(!e || !m){ alert('Please add email and message'); return; }
+      // demo: store in localStorage
+      const key = 'gt_contact_demo';
+      const arr = JSON.parse(localStorage.getItem(key) || '[]');
+      arr.push({ name:n, email:e, message:m, date: new Date().toLocaleString() });
+      localStorage.setItem(key, JSON.stringify(arr));
+      document.getElementById('sentBox').textContent = 'Message saved (demo). We will contact at ' + e;
+      document.getElementById('cmsg').value = '';
+    });
+  </script>
+</body>
+  </html>
